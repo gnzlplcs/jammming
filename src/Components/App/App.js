@@ -18,6 +18,12 @@ const App = () => {
     { name: "track 3", artist: "artist 3", album: "album 3", id: 3 },
   ]);
 
+  const addTrack = (track) => {
+    if (playlistTracks.find((savedTrack) => savedTrack.id === track.id)) return;
+    setPlaylistTracks(prev => ({...prev, track}))
+  };
+
+
   return (
     <div>
       <h1>
@@ -26,7 +32,7 @@ const App = () => {
       <div className="App">
         {/* <!-- Add a SearchBar component --> */}
         <div className="App-playlist">
-          <SearchResults searchResults={searchResults} />
+          <SearchResults searchResults={searchResults} onAdd={addTrack}/>
           <Playlist
             playlistName={playlistName}
             playlistTracks={playlistTracks}
