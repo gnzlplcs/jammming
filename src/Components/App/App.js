@@ -36,11 +36,17 @@ const App = () => {
 
   const addTrack = (track) => {
     if (playlistTracks.find((savedTrack) => savedTrack.id === track.id)) {
-      return
-    };
-    setPlaylistTracks(prev => {
-      return [...prev, track]
+      return;
+    }
+    setPlaylistTracks((prev) => {
+      return [...prev, track];
     });
+  };
+
+  const removeTrack = (track) => {
+    setPlaylistTracks(
+      playlistTracks.filter((currentTrack) => currentTrack.id !== track.id)
+    );
   };
 
   return (
@@ -55,6 +61,7 @@ const App = () => {
           <Playlist
             playlistName={playlistName}
             playlistTracks={playlistTracks}
+            onRemove={removeTrack}
           />
         </div>
       </div>
