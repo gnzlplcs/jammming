@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SearchResults from "../SearchResults/SearchResults";
+import SearchBar from "../SearchBar/SearchBar";
 import Playlist from "../Playlist/Playlist";
 import "./App.css";
 
@@ -10,19 +11,37 @@ const App = () => {
     { name: "song 3", artist: "singer 3", album: "album 3", id: 3 },
   ]);
 
-  const [playlistName, setPlaylistName] = useState("playlist 1");
+  const [playlistName, setPlaylistName] = useState("my playlist");
 
   const [playlistTracks, setPlaylistTracks] = useState([
-    { name: "track 1", artist: "artist 1", album: "album 1", id: 1 },
-    { name: "track 2", artist: "artist 2", album: "album 2", id: 2 },
-    { name: "track 3", artist: "artist 3", album: "album 3", id: 3 },
+    {
+      name: "playlist 1",
+      artist: "playlistArtist 1",
+      album: "playlistAlbum 1",
+      id: 4,
+    },
+    {
+      name: "playlist 2",
+      artist: "playlistArtist 2",
+      album: "playlistAlbum 2",
+      id: 5,
+    },
+    {
+      name: "playlist 3",
+      artist: "playlistArtist 3",
+      album: "playlistAlbum 3",
+      id: 6,
+    },
   ]);
 
   const addTrack = (track) => {
-    if (playlistTracks.find((savedTrack) => savedTrack.id === track.id)) return;
-    setPlaylistTracks(prev => ({...prev, track}))
+    if (playlistTracks.find((savedTrack) => savedTrack.id === track.id)) {
+      return
+    };
+    setPlaylistTracks(prev => {
+      return [...prev, track]
+    });
   };
-
 
   return (
     <div>
@@ -30,9 +49,9 @@ const App = () => {
         Ja<span className="highlight">mmm</span>ing
       </h1>
       <div className="App">
-        {/* <!-- Add a SearchBar component --> */}
+        <SearchBar />
         <div className="App-playlist">
-          <SearchResults searchResults={searchResults} onAdd={addTrack}/>
+          <SearchResults searchResults={searchResults} onAdd={addTrack} />
           <Playlist
             playlistName={playlistName}
             playlistTracks={playlistTracks}
