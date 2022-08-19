@@ -1,6 +1,14 @@
-import './App.css';
+import { useState } from "react";
+import SearchResults from "../SearchResults/SearchResults";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [searchResults, setSearchResults] = useState([
+    { name: "song 1", artist: "singer 1", album: "album 1", id: 1 },
+    { name: "song 2", artist: "singer 2", album: "album 2", id: 2 },
+    { name: "song 3", artist: "singer 3", album: "album 3", id: 3 },
+  ]);
+
   return (
     <div>
       <h1>
@@ -9,12 +17,12 @@ function App() {
       <div className="App">
         {/* <!-- Add a SearchBar component --> */}
         <div className="App-playlist">
-          {/* <!-- Add a SearchResults component --> */}
+          <SearchResults searchResults={searchResults} />
           {/* <!-- Add a Playlist component --> */}
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default App;
