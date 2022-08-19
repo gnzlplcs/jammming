@@ -2,10 +2,14 @@ import React from "react";
 import TrackList from "../TrackList/TrackList";
 import "./Playlist.css";
 
-const Playlist = ({ playlistName, playlistTracks, onRemove }) => {
+const Playlist = ({ playlistName, playlistTracks, onRemove, onNameChange }) => {
+  const handleNameChange = (e) => {
+    onNameChange(e.target.value)
+  }
+
   return (
     <div className="Playlist">
-      <input defaultValue={playlistName} />
+      <input defaultValue={playlistName} onChange={handleNameChange}/>
       <TrackList tracks={playlistTracks} onRemove={onRemove} isRemoval={true}/>
       <button className="Playlist-save">SAVE TO SPOTIFY</button>
     </div>
