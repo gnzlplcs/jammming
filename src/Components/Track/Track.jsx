@@ -6,11 +6,7 @@ const Track = ({ onAdd, isRemoval, track, onRemove }) => {
     if (isRemoval) {
       return <button className="Track-action" onClick={removeTrack}>-</button>;
     } else {
-      return (
-        <button className="Track-action" onClick={addTrack}>
-          +
-        </button>
-      );
+      return <button className="Track-action" onClick={addTrack}>+</button>;
     }
   };
 

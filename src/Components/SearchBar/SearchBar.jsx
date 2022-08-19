@@ -18,7 +18,7 @@ const SearchBar = ({ onSearch }) => {
         placeholder="Enter A Song, Album, or Artist"
         onChange={handleTermChange}
       />
-      <button className="SearchButton">SEARCH</button>
+      <button className="SearchButton" onClick={search}>SEARCH</button>
     </div>
   );
 };
